@@ -174,6 +174,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddpPermisionsToSuperuser.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -188,7 +189,9 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\RolesView.cs" />
     <Compile Include="Controllers\SuppliersController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Data\F_StoreContext.cs" />
     <Compile Include="Data\OnModelCreating.cs" />
     <Compile Include="Global.asax.cs">
@@ -196,12 +199,14 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ProductOrder.cs" />
-    <Compile Include="ViewModels\AccountViewModels.cs" />
+    <Compile Include="ModelView\RoleView.cs" />
+    <Compile Include="ModelView\UserView.cs" />
+    <Compile Include="ModelView\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\DocumentType.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="ViewModels\ManageViewModels.cs" />
+    <Compile Include="ModelView\ManageViewModels.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\OrderStatus.cs" />
@@ -210,7 +215,7 @@
     <Compile Include="Models\SupplierProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\OrderView.cs" />
+    <Compile Include="ModelView\OrderView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -295,6 +300,8 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Orders\NewOrder.cshtml" />
     <Content Include="Views\Orders\AddProduct.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\Roles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -31,6 +31,11 @@ namespace F_Store
 
             CreateRoles(db);
 
+            // Super Usuario
+            CreateSuperUser(db);
+            // Pemisos para Super Usuario
+            AddPermisionsToSuperUser(db);
+
             // Cierra la base de datos
             db.Dispose();
 
@@ -41,10 +46,58 @@ namespace F_Store
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
+        private void AddPermisionsToSuperUser(ApplicationDbContext db)
+        {
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+
+            var user = userManager.FindByName("lethal1010@hotmail.com");
+
+            // Verifica si el usuario NO está en el permiso View
+            if (!userManager.IsInRole(user.Id, "View"))
+            {
+                userManager.AddToRole(user.Id, "View");
+            }
+
+            // Verifica si el usuario NO está en el permiso Create
+            if (!userManager.IsInRole(user.Id, "Create"))
+            {
+                userManager.AddToRole(user.Id, "Create");
+            }
+
+            // Verifica si el usuario NO está en el permiso Delete
+            if (!userManager.IsInRole(user.Id, "Delete"))
+            {
+                userManager.AddToRole(user.Id, "Delete");
+            }
+
+            // Verifica si el usuario NO está en el permiso Edit
+            if (!userManager.IsInRole(user.Id, "Edit"))
+            {
+                userManager.AddToRole(user.Id, "Edit");
+            }
+        }
+
+        private void CreateSuperUser(ApplicationDbContext db)
+        {
+            var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+            var user = userManager.FindByName("lethal1010@hotmail.com");
+
+            if (user == null)
+            {
+                user = new ApplicationUser
+                {
+                    UserName = "lethal1010@hotmail.com",
+                    Email = "lethal1010@hotmail.com",
+                };
+                userManager.Create(user, "IPM2019!");
+            }
+               
+        }
+
         private void CreateRoles(ApplicationDbContext db)
         {
             // Funcion para insertar los roles si ellos no existen en la base de datos, por eso el ! al inicio
-
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
             if (!roleManager.RoleExists("View"))
             {
