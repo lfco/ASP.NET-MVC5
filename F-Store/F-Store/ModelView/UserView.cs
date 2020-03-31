@@ -18,5 +18,7 @@ namespace F_Store.ModelView
 
         // Para mostrar los roles del usuario
         public List<RoleView> Roles { get; set; }
+
+        public RoleView Role { get; set; }
     }
 }
