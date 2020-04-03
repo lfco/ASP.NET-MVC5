@@ -39,5 +39,7 @@ namespace F_Store.Data
         public System.Data.Entity.DbSet<F_Store.Models.Order> Orders { get; set; }
 
         public System.Data.Entity.DbSet<F_Store.Models.OrderDetail> OrderDetails { get; set; }
+
+        public System.Data.Entity.DbSet<F_Store.Models.Category> Categories { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -42,7 +43,9 @@ namespace F_Store.Models
         [NotMapped]
         public string FullName { get { return string.Format("{0} {1}", FirstName, LastName); } set { } } 
 
+        [JsonIgnore]
         public virtual DocumentType DocumentType { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Order> Orders { get; set; }
     }
 }

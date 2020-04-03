@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -16,7 +17,9 @@ namespace F_Store.Models
         [Required(ErrorMessage = "You must enter {0}")]
         public string Description { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Employee> Employees { get; set; }
+        [JsonIgnore]
         public virtual  ICollection<Customer> Customers { get; set; }
     }
 }
